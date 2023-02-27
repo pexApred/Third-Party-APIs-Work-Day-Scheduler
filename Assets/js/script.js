@@ -20,9 +20,9 @@ $(function updateWorkDaySchedule() {
     console.log("test");
     // Console.log above works/Now i need to save 
     // Description element within the time-block
-    const calendarNotes = $(this).siblings('.description').val();
+    var calendarNotes = $(this).siblings('.description').val();
     // id of time block
-    const keyValue = $(this).parent().attr('id');
+    var keyValue = $(this).parent().attr('id');
     // Saving input to local storage using time-block id
     localStorage.setItem(keyValue, calendarNotes);
   });
