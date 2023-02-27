@@ -6,7 +6,7 @@ $(function updateWorkDaySchedule() {
 
   // TODO: Add code to display the current date in the header of the page.
   var currentDateTime = dayjs();
-    $('#currentDay').text(currentDateTime.format('dddd, MMMM DD[th], hh:mm:ss'));
+    $('#currentDay').text(currentDateTime.format('dddd, MMMM DD[th]'));
 
   // TODO: Add a listener for click events on the save button. This code should
   // use the id in the containing time-block as a key to save the user input in
@@ -27,10 +27,7 @@ $(function updateWorkDaySchedule() {
     localStorage.setItem(keyValue, calendarNotes);
   });
 
-
   
-
-  //
   // TODO: Add code to apply the past, present, or future class to each time
   // block by comparing the id to the current hour. HINTS: How can the id
   // attribute of each time-block be used to conditionally add or remove the
@@ -38,9 +35,10 @@ $(function updateWorkDaySchedule() {
   // current hour in 24-hour time?
 
   $('.time-block').each(function() {
-    // This 
+    // This is referring to the <div> containing .time-block & id hour-x
+    // Parsing string to integer, grabbing attribute 'id' and 
+    // splitting the hour-x at '-' to get [0]= hour, [1]= x 
     var blockHour = parseInt($(this).attr('id').split('-')[1]);
-    console.log(blockHour);
 
     if (blockHour < currentDateTime.hour()) {
       $(this).addClass('past');
@@ -55,13 +53,17 @@ $(function updateWorkDaySchedule() {
       $(this).removeClass('present');
       $(this).addClass('future');
     }
-  });
-  //
   // TODO: Add code to get any user input that was saved in localStorage and set
   // the values of the corresponding textarea elements. HINT: How can the id
   // attribute of each time-block be used to do this?
-  //
+    var blockId = $(this).attr('id');
+    var savedInput = localStorage.getItem(blockId);
 
+    if (savedInput) {
+      $(this).find('.description').val(savedInput);
+    }
+
+  });
   // Update the date every day
   setInterval ( updateWorkDaySchedule, 24 * 60 * 60 * 1000 );
 
