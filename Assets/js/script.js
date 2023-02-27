@@ -18,13 +18,12 @@ $(function updateWorkDaySchedule() {
 
   saveBtnEl.on("click", function() {
     console.log("test");
-    // set a const to get ".description" by class value
-    // set a const keyValue = $(this.parent.attr('id'));
-    // set (save) item to local storage 
-    // localStorage.setItem(keyValue, value)
+    const calendarNotes = $('.description');
+    const keyValue = $(this.parent.attr('id'));
+    localStorage.setItem(keyValue, calendarNotes);
   });
 
-  
+
   
 
   //
@@ -35,6 +34,7 @@ $(function updateWorkDaySchedule() {
   // current hour in 24-hour time?
 
   $('.time-block').each(function() {
+    // This 
     var blockHour = parseInt($(this).attr('id').split('-')[1]);
     console.log(blockHour);
 
