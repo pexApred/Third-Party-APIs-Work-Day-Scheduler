@@ -16,6 +16,16 @@ $(function updateWorkDaySchedule() {
   // useful when saving the description in local storage?
   var saveBtnEl = $('.saveBtn');
 
+  saveBtnEl.on("click", function() {
+    console.log("test");
+    // set a const to get ".description" by class value
+    // set a const keyValue = $(this.parent.attr('id'));
+    // set (save) item to local storage 
+    // localStorage.setItem(keyValue, value)
+  });
+
+  
+  
 
   //
   // TODO: Add code to apply the past, present, or future class to each time
@@ -26,6 +36,7 @@ $(function updateWorkDaySchedule() {
 
   $('.time-block').each(function() {
     var blockHour = parseInt($(this).attr('id').split('-')[1]);
+    console.log(blockHour);
 
     if (blockHour < currentDateTime.hour()) {
       $(this).addClass('past');
@@ -48,6 +59,6 @@ $(function updateWorkDaySchedule() {
   //
 
   // Update the date every day
-  setInterval ( updateWorkDaySchedule, 1000 );
+  setInterval ( updateWorkDaySchedule, 24 * 60 * 60 * 1000 );
 
 });
