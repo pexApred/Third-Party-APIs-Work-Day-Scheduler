@@ -5,8 +5,8 @@
 $(function updateWorkDaySchedule() {
 
   // TODO: Add code to display the current date in the header of the page.
-  var currentDateTime = dayjs().format('dddd, MMMM DD[th]');
-    $('#currentDay').text(currentDateTime);
+  var currentDateTime = dayjs();
+    $('#currentDay').text(currentDateTime.format('dddd, MMMM DD[th], hh:mm:ss'));
 
   // TODO: Add a listener for click events on the save button. This code should
   // use the id in the containing time-block as a key to save the user input in
@@ -48,6 +48,6 @@ $(function updateWorkDaySchedule() {
   //
 
   // Update the date every day
-  setInterval ( updateWorkDaySchedule, 60000 );
+  setInterval ( updateWorkDaySchedule, 1000 );
 
 });
