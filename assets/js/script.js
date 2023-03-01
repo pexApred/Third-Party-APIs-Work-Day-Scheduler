@@ -7,8 +7,6 @@ $(function updateWorkDaySchedule() {
   var saveBtnEl = $('.saveBtn');
 
   saveBtnEl.on("click", function() {
-    console.log("test");
-    // Console.log above works/Now i need to save 
     // Description element within the time-block
     var calendarNotes = $(this).siblings('.description').val();
     // id of time block
